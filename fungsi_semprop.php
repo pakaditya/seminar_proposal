@@ -15,7 +15,7 @@
 			$this->host = "localhost";
 			$this->user = "root";
 			$this->pass = "";
-			$this->db   = "mskripsi_rev";
+			$this->db   = "prpl";
 		}
 
 		//fungsi untuk mengkoneksikan ke database

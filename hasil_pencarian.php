@@ -9,9 +9,6 @@
 
 ?>
 
-
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -41,8 +38,8 @@
       <li class="nav-item active">
         <a class="nav-link" href="pencarian_semprop.php">HOME<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="hasil_input_semprop.php">HASIL INPUT</a>
+      <li class="nav-item">
+        <a class="nav-link" href="hasil_input_semprop">HASIL INPUTAN</a>
       </li>
     </ul>
     
@@ -63,36 +60,39 @@
 
 <?php
   
-if(isset($_POST['simpan'])){
-
-    $id = $_POST['nim'];
-    $nilai = $_POST['nilai'];
-    $status = $_POST['status'];
+  if(isset($_POST['submit'])){
 
 
-      $akses->input_nilai_semprop($id,$nilai,$status,$id);
+      $nim = $_POST['nim'];
+                  echo "
+                 
 
-     
-      foreach ($akses->lihat_data_tersimpan($id) as $key) {
+                 
+        <form action='hasil_input_semprop.php' method='POST'>
+
         
+                  ";
+                
+
+      foreach ($akses->cari($nim) as $key) {
         
         echo"
         <table align='center'>
         <tr>
         <td width='700px'>
 
-
-<div class='form-group'>
+  <div class='form-group'>
     <label for='formGroupExampleInput'>NIM </label>
     <input name='nim' value='$key[nim]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
     <label for='formGroupExampleInput'>NAMA </label>
     <input name='nama' value='$key[nama_mhs]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-  
-    
+    <label for='formGroupExampleInput'>PEMBIMBING </label>
+    <input name='pembimbing' value='$key[nama_dsn]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
 
   </div>
  
-        
+        <input name='key' value='$key[id_penguji]' hidden class='form-control' aria-label='Text input with checkbox' >
+</div>
         
         
         ";
@@ -100,13 +100,19 @@ if(isset($_POST['simpan'])){
 
                     
         echo "
-       
-        NILAI UJIAN      : <input name='nilai' value='$key[nilai]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+        ID DOSEN PENGUJI : <input name='penguji' value='$key[id_penguji]' type='text' readonly class='form-control' aria-label='Text input with checkbox'>
+        NILAI UJIAN      : <input type='text' name='nilai' class='form-control' aria-label='Text input with checkbox'>
       
-        STATUS           :  <input name='status' value='$key[status]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+        STATUS           : <select name='status' class='form-control' aria-label='Text input with checkbox' >
+                                         <option>- PILIH -</option> 
+                                        <option value='lulus'> lulus </option> 
+                                        <option value='tidak_lulus'> tidak lulus </option>
+                                   </select> 
         
-    
-  </div>
+        <br>   <input type='submit' name='simpan' value='simpan' class='btn btn-outline-success my-2 my-sm-0'>    
+        
+
+        </form>
         </td>
         </tr>
         </table>
@@ -120,5 +126,6 @@ if(isset($_POST['simpan'])){
 
   </body>
 </html>
+
 
 

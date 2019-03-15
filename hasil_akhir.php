@@ -9,6 +9,9 @@
 
 ?>
 
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,27 +22,27 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>HASIL PENCARIAN</title>
   </head>
   <body>
 
-  </div>
+    </div>
   <img class="card-img-bottom" src="img/SEMINAR.jpg" alt="Card image cap">
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <!-- <a class="navbar-brand" href="#">Navbar</a>
+   <!-- <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button> -->
 
-   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="pencarian_semprop.php">HOME<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="hasil_input_semprop.php">HASIL INPUT</a>
+      <li class="nav-item">
+        <a class="nav-link" href="hasil_akhir.php">HASIL INPUTAN</a>
       </li>
     </ul>
     
@@ -57,24 +60,57 @@
           </form>
   </div>
 </nav>
-<table  align="center">
 
-<tr>
+<?php
   
-  <td width="1100px">
-    <div class="card mb-3">
-  <img class="card-img-bottom" src="img/bguad.jpg" alt="Card image cap">
-</div>
-  </td>
-  
-  
-</tr>
+
+     
+      foreach ($akses->lihat_data_tersimpan() as $key) {
+        
+        
+        echo"
+        <table align='center'>
+        <tr>
+        <td width='700px'>
 
 
+<div class='form-group'>
+    <label for='formGroupExampleInput'>NIM </label>
+    <input name='nim' value='$key[nim]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>NAMA </label>
+    <input name='nama' value='$key[nama_mhs]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+  
+    
+
+  </div>
+ 
+        
+        
+        
+        ";
+
+
+                    
+        echo "
+       
+        NILAI UJIAN      : <input name='nim' value='$key[nilai]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+      
+        STATUS           :  <input name='nim' value='$key[status]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+        
+    
+  </div>
+        </td>
+        </tr>
+        </table>
+        ";
+
+
+      }
+    }
+      ?>
 
 
   </body>
 </html>
-
 
 
