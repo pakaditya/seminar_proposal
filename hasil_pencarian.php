@@ -33,13 +33,13 @@
     <span class="navbar-toggler-icon"></span>
   </button> -->
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+ <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="pencarian_semprop.php">HOME<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="hasil_input_semprop">HASIL INPUTAN</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="hasil_input_semprop.php">HASIL INPUT</a>
       </li>
     </ul>
     
